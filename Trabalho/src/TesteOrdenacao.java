@@ -2,10 +2,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class TesteOrdenacao {
+    // <<<<<<<<<<<<<< MÉTODOS DE ORDENAÇÃO >>>>>>>>>>>>>>
+
     public static void bubbleSort(int[] vetor) {
-        int n = vetor.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - 1 - i; j++) {
+        for (int i = 0; i < vetor.length - 1; i++) {
+            for (int j = 0; j < vetor.length - 1 - i; j++) {
                 if (vetor[j] > vetor[j + 1]) {
                     int temp = vetor[j];
                     vetor[j] = vetor[j + 1];
@@ -43,7 +44,7 @@ public class TesteOrdenacao {
         }
     }
 
-    // ---------- GERAÇÃO DE VETORES ----------
+    // <<<<<<<<<<<<<< GERAÇÃO DE VETORES >>>>>>>>>>>>>>
 
     public static int[] gerarAleatorio(int tamanho) {
         int[] vetor = new int[tamanho];
@@ -70,9 +71,8 @@ public class TesteOrdenacao {
         return vetor;
     }
 
-    // ---------- MEDIÇÃO DE TEMPO ----------
+    // <<<<<<<<<<<<<< MEDIÇÃO DE TEMPO >>>>>>>>>>>>>>
 
-    // recebe o vetor de teste e o nome do algoritmo, mede e imprime o tempo
     public static void medirTempo(String nomeAlgoritmo, int[] vetorOriginal) {
         int[] copia = Arrays.copyOf(vetorOriginal, vetorOriginal.length);
 
@@ -91,12 +91,12 @@ public class TesteOrdenacao {
         }
 
         long fim = System.nanoTime();
-        long duracaoMs = (fim - inicio) / 1_000_000; // nanosegundos -> milissegundos
+        long duracaoMs = (fim - inicio) / 1_000_000;
 
         System.out.println(nomeAlgoritmo + ": " + duracaoMs + " ms");
     }
 
-    // ---------- MAIN ----------
+    // <<<<<<<<<<<<<< MAIN  >>>>>>>>>>>>>>
 
     public static void main(String[] args) {
         int tamanho = 100;
