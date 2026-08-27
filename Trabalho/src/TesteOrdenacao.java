@@ -3,14 +3,13 @@ import java.util.Random;
 
 public class TesteOrdenacao {
     // <<<<<<<<<<<<<< MÉTODOS DE ORDENAÇÃO >>>>>>>>>>>>>>
-
     public static void bubbleSort(int[] vetor) {
         for (int i = 0; i < vetor.length - 1; i++) {
             for (int j = 0; j < vetor.length - 1 - i; j++) {
                 if (vetor[j] > vetor[j + 1]) {
-                    int temp = vetor[j];
+                    int aux = vetor[j];
                     vetor[j] = vetor[j + 1];
-                    vetor[j + 1] = temp;
+                    vetor[j + 1] = aux;
                 }
             }
         }
@@ -25,9 +24,9 @@ public class TesteOrdenacao {
                 }
             }
             if (posicaoMenor != i) {
-                int temp = vetor[i];
+                int aux = vetor[i];
                 vetor[i] = vetor[posicaoMenor];
-                vetor[posicaoMenor] = temp;
+                vetor[posicaoMenor] = aux;
             }
         }
     }
@@ -45,7 +44,6 @@ public class TesteOrdenacao {
     }
 
     // <<<<<<<<<<<<<< GERAÇÃO DE VETORES >>>>>>>>>>>>>>
-
     public static int[] gerarAleatorio(int tamanho) {
         int[] vetor = new int[tamanho];
         Random random = new Random();
@@ -72,10 +70,8 @@ public class TesteOrdenacao {
     }
 
     // <<<<<<<<<<<<<< MEDIÇÃO DE TEMPO >>>>>>>>>>>>>>
-
     public static void medirTempo(String nomeAlgoritmo, int[] vetorOriginal) {
         int[] copia = Arrays.copyOf(vetorOriginal, vetorOriginal.length);
-
         long inicio = System.nanoTime();
 
         switch (nomeAlgoritmo) {
@@ -97,7 +93,6 @@ public class TesteOrdenacao {
     }
 
     // <<<<<<<<<<<<<< MAIN  >>>>>>>>>>>>>>
-
     public static void main(String[] args) {
         int tamanho = 100;
 
