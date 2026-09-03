@@ -1,8 +1,9 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class TesteOrdenacao {
-    // <<<<<<<<<<<<<< MÉTODOS DE ORDENAÇÃO >>>>>>>>>>>>>>
+public class Atividade1 {
+
+    // <<<<< MÉTODOS DE ORDENAÇÃO >>>>>
     public static void bubbleSort(int[] vetor) {
         for (int i = 0; i < vetor.length - 1; i++) {
             for (int j = 0; j < vetor.length - 1 - i; j++) {
@@ -43,12 +44,12 @@ public class TesteOrdenacao {
         }
     }
 
-    // <<<<<<<<<<<<<< GERAÇÃO DE VETORES >>>>>>>>>>>>>>
+    // <<<<< GERAÇÃO DE VETORES >>>>>
     public static int[] gerarAleatorio(int tamanho) {
         int[] vetor = new int[tamanho];
         Random random = new Random();
         for (int i = 0; i < tamanho; i++) {
-            vetor[i] = random.nextInt(10000);
+            vetor[i] = random.nextInt(100);
         }
         return vetor;
     }
@@ -69,32 +70,31 @@ public class TesteOrdenacao {
         return vetor;
     }
 
-    // <<<<<<<<<<<<<< MEDIÇÃO DE TEMPO >>>>>>>>>>>>>>
+    // <<<<< MEDIDOR DE TEMPO >>>>>
     public static void medirTempo(String nomeAlgoritmo, int[] vetorOriginal) {
         int[] copia = Arrays.copyOf(vetorOriginal, vetorOriginal.length);
         long inicio = System.nanoTime();
 
         switch (nomeAlgoritmo) {
             case "Bubble Sort":
-                bubbleSort(copia);
-                break;
+                bubbleSort(copia); break;
+
             case "Seleção Direta":
-                selecaoDireta(copia);
-                break;
+                selecaoDireta(copia); break;
+
             case "Inserção Direta":
-                insercaoDireta(copia);
-                break;
+                insercaoDireta(copia); break;
         }
 
         long fim = System.nanoTime();
         long duracaoMs = (fim - inicio) / 1_000_000;
 
-        System.out.println(nomeAlgoritmo + ": " + duracaoMs + " ms");
+        System.out.println(nomeAlgoritmo + ": " + duracaoMs + " ms.");
     }
 
-    // <<<<<<<<<<<<<< MAIN  >>>>>>>>>>>>>>
+    // <<<<< MAIN >>>>>
     public static void main(String[] args) {
-        int tamanho = 100;
+        int tamanho = 1000;
 
         int[] aleatorio = gerarAleatorio(tamanho);
         int[] ordenado = gerarOrdenado(tamanho);
@@ -102,19 +102,19 @@ public class TesteOrdenacao {
 
         String[] algoritmos = {"Bubble Sort", "Seleção Direta", "Inserção Direta"};
 
-        System.out.println("===== Vetor Aleatório (" + tamanho + " elementos) =====");
-        for (String alg : algoritmos) {
-            medirTempo(alg, aleatorio);
-        }
-
-        System.out.println("\n===== Vetor Ordenado (" + tamanho + " elementos) =====");
+        System.out.println("<=======> Vetor Ordenado (" + tamanho + " elementos) <=======>");
         for (String alg : algoritmos) {
             medirTempo(alg, ordenado);
         }
 
-        System.out.println("\n===== Vetor Invertido (" + tamanho + " elementos) =====");
+        System.out.println("<=======> Vetor Invertido (" + tamanho + " elementos) <=======>");
         for (String alg : algoritmos) {
             medirTempo(alg, invertido);
+        }
+
+        System.out.println("<=======> Vetor Aleatório (" + tamanho + " elementos) <=======>");
+        for (String alg : algoritmos) {
+            medirTempo(alg, aleatorio);
         }
     }
 }
