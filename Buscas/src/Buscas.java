@@ -22,7 +22,7 @@ public class Buscas {
         return -1;
     }
 
-    // busca binaria
+    // busca binaria (iterativa)
     public static int buscaBinaria(int[] vetor, int inicio, int fim, int numeroProcurado) {
         while (inicio <= fim) {
             int meio = (inicio + fim) / 2;
@@ -36,6 +36,23 @@ public class Buscas {
             }
         }
         return -1;
+    }
+
+    // busca binaria (recursiva)
+    public static int buscaBinariaRecursiva(int[] vetor, int inicio, int fim, int numeroProcurado) {
+        if (inicio > fim) {
+            return -1; // caso base: não encontrou
+        }
+
+        int meio = (inicio + fim) / 2;
+
+        if (vetor[meio] == numeroProcurado) {
+            return meio; // caso base: encontrou
+        } else if (vetor[meio] < numeroProcurado) {
+            return buscaBinariaRecursiva(vetor, meio + 1, fim, numeroProcurado);
+        } else {
+            return buscaBinariaRecursiva(vetor, inicio, meio - 1, numeroProcurado);
+        }
     }
 
     // medidor de tempo - busca sequencial
@@ -54,14 +71,30 @@ public class Buscas {
         System.out.println("Tempo de execução: " + duracaoMs + " ms.");
     }
 
-    // medidor de tempo - busca binaria
+    // medidor de tempo - busca binaria (iterativa)
     public static void medirTempoBinaria(int[] vetor, int numeroProcurado) {
         long inicio = System.nanoTime();
         int resultado = buscaBinaria(vetor, 0, vetor.length - 1, numeroProcurado);
         long fim = System.nanoTime();
         long duracaoMs = (fim - inicio) / 1_000_000;
 
-        System.out.println("\n--- Busca Binária ---");
+        System.out.println("\n--- Busca Binária (não recursiva) ---");
+        if (resultado != -1) {
+            System.out.println("Número encontrado na posição " + resultado + ".");
+        } else {
+            System.out.println("Número não encontrado.");
+        }
+        System.out.println("Tempo de execução: " + duracaoMs + " ms.");
+    }
+
+    // medidor de tempo - busca binaria (recursiva)
+    public static void medirTempoBinariaRecursiva(int[] vetor, int numeroProcurado) {
+        long inicio = System.nanoTime();
+        int resultado = buscaBinariaRecursiva(vetor, 0, vetor.length - 1, numeroProcurado);
+        long fim = System.nanoTime();
+        long duracaoMs = (fim - inicio) / 1_000_000;
+
+        System.out.println("\n--- Busca Binária (recursiva) ---");
         if (resultado != -1) {
             System.out.println("Número encontrado na posição " + resultado + ".");
         } else {
@@ -85,5 +118,6 @@ public class Buscas {
 
         medirTempoSequencial(vetor, numeroProcurado);
         medirTempoBinaria(vetor, numeroProcurado);
+        medirTempoBinariaRecursiva(vetor, numeroProcurado);
     }
 }
