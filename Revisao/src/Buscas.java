@@ -22,7 +22,7 @@ public class Buscas {
         return -1;
     }
 
-    // busca binaria (iterativa)
+    // busca binária
     public static int buscaBinaria(int[] vetor, int inicio, int fim, int numeroProcurado) {
         while (inicio <= fim) {
             int meio = (inicio + fim) / 2;
@@ -41,13 +41,13 @@ public class Buscas {
     // busca binaria (recursiva)
     public static int buscaBinariaRecursiva(int[] vetor, int inicio, int fim, int numeroProcurado) {
         if (inicio > fim) {
-            return -1; // caso base: não encontrou
+            return -1;
         }
 
         int meio = (inicio + fim) / 2;
 
         if (vetor[meio] == numeroProcurado) {
-            return meio; // caso base: encontrou
+            return meio;
         } else if (vetor[meio] < numeroProcurado) {
             return buscaBinariaRecursiva(vetor, meio + 1, fim, numeroProcurado);
         } else {
