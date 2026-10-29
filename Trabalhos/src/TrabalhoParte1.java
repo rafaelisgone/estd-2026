@@ -15,17 +15,22 @@ public class TrabalhoParte1 {
 
         // Percorre a expressão caractere por caractere
         for (int i = 0; i < expressao.length(); i++) {
-            char c = expressao.charAt(i); // o caracter "c" irá guardar e adicionar o delimitador encontrado dentro da pilha
+      // cmç na 1ª pos; enquanto n passou da última pos;
 
-            // Caso 1: abertura -> empilha
+            char c = expressao.charAt(i); //char c guardará o caracter da expressâo na posição i
+
+            // Caso 1: abertura
+            // Se qualquer caracter for um delimitador de abertura, ele será empilhado
             if (c == '(' || c == '[' || c == '{') {
                 pilha.push(c);
             }
 
-            // Caso 2: fechamento -> confere com o topo
+            // Caso 2: fechamento
+            // A pilha encontrou um caracter de delimitador de fechamento
             else if (c == ')' || c == ']' || c == '}') {
 
-                // Fechou sem ter aberto nada
+                // Se este delimitador está fechando, porém a pilha está vazia, ou seja, não há um delimitador aberto
+                // esperando, retorna false imediatamente
                 if (pilha.isEmpty()) {
                     return false;
                 }
