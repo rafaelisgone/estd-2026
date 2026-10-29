@@ -74,13 +74,15 @@ public class ListaEncadeada<T> {
         return removido + " removido com sucesso.";
     }
 
-    // adicionar nó no começo da lista
+    // adiciona um nó no começo da lista
     public void adicionarNoInicio(T valor) {
         No<T> novoNo = new No<>(valor);
 
+        novoNo.proximo = inicio; // o novo nó aponta para o antigo primeiro
+        inicio = novoNo;         // o novo nó passa a ser o primeiro
 
+        tamanho++;               // um elemento a mais
     }
-
 
     public static void main(String[] args) {
         ListaEncadeada<String> lista = new ListaEncadeada<>();
