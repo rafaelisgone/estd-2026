@@ -35,7 +35,7 @@ public class TrabalhoParte1 {
                     return false;
                 }
 
-                char topo = pilha.pop(); // remove a última abertura
+                char topo = pilha.pop(); // o pop devolve a última abertura para conferir o par e a retira por já estar resolvida
 
                 // O topo precisa ser o par do caractere atual
                 if (!combina(topo, c)) {
